@@ -1,0 +1,42 @@
+DesktopSize 1x1
+
+ClickTime 350
+MoveThreshold 3
+Style * SloppyFocus, MouseFocusClickRaises
+Style "*" Font "xft:Droid Sans Mono:pixelsize=16:Bold"
+MenuStyle "*" Font "xft:Droid Sans Mono:pixelsize=16"
+
+DestroyFunc TopLeft
+AddToFunc TopLeft
++ I Maximize True 50 98
++ I Move +0 +0
+
+DestroyFunc BottomRight
+AddToFunc BottomRight
++ I Maximize True 50 98
++ I Move +50 +0
+
+DestroyMenu FvwmRootMenu
+AddToMenu FvwmRootMenu "Root Menu" Title
++ "Snap to the left" TopLeft
++ "Snap to the right" BottomRight
++ "Maximize" Maximize True 100 98
++ "RXVT" Exec exec urxvt
++ "Firefox" Exec exec firefox
++ "Thunderbird" Exec exec thunderbird
++ "Pidgin" Exec exec pidgin
++ "Lock Screen" Exec exec xscreensaver-command -lock
++ "Restart FVWM" Restart
++ "Quit FVWM" Quit
+
+Mouse 1 R A Menu FvwmRootMenu
+Key F1 A M Menu FvwmRootMenu
+
+Style "FvwmTaskBar" NoTitle, !Handles, !Borders, Sticky, WindowListSkip, CirculateSkip, StaysOnTop, FixedPosition, FixedSize, !Iconifiable
+
+DestroyModuleConfig FvwmTaskBar: *
+*FvwmTaskBar: Font "xft:Sans:Bold:pixelsize=14:minispace=True:antialias=True"
+*FvwmTaskBar: SelFont "xft:Sans:Bold:pixelsize=14:minispace=True:antialias=True"
+*FvwmTaskBar: StatusFont "xft:Sans:Bold:pixelsize=14:minispace=True:antialias=True"
+
+Module FvwmTaskBar
